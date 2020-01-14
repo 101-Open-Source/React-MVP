@@ -8,16 +8,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-app.get('/', (req, res) => res.send('Hello World!')
-.catch((err)=> {
-    console.log(err)
-    throw err;
-}))
 
-app.post('http://localhost:3000/sending-username-to-server', (data) => {
-console.log(data)
+
+
+app.post('/sending-username-to-server', (req, res) => {
+  console.log('here')
+  console.log(req.body);
+  res.send('heee')
 })
-app.get('http://localhost:3000/sending-username-to-server', (data) => {
-console.log(data)
-})
+app.get('/', (req, res,  next) =>{
+  res.send('Hello World!')
+ next()
+ }) 
+
 app.listen(port, () => console.log(`App listening on port ${port}!`))

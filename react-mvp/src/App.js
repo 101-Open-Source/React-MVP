@@ -39,15 +39,27 @@ class App extends Component {
 //     }
 // });
 // }
-handleSubmit(event){ 
-  console.log('hi')
+handleSubmit(event){
+  console.log(event)
+  // console.log('hi')
   console.log(this.state.username)
   event.preventDefault();
-  const data = this.state.username
-  axios.post('http://localhost:3305/sending-username-to-server', data)
-      .then(res => console.log(res.data))
 
-    .then(this.setState({ username: '' }))
+  axios.post('http://127.0.0.1:3305/sending-username-to-server', {
+    username : this.state.username
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  // const data = this.state.username
+  // console.log(data)
+  // axios.post('http://localhost:3305/sending-username-to-server', data)
+  //     .then(res => console.log(res.body.data))
+
+    // .then(this.setState({ username: '' }))
   }
 
 
