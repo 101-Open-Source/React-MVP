@@ -3,12 +3,11 @@ const app = express()
 const port = 3305
 const { User } = require('../DataBase/modle.js')
 var bodyParser = require('body-parser')
+const cors = require('cors');
+app.use(cors())
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-
-
 
 
 app.post('/sending-username-to-server', (req, res) => {
