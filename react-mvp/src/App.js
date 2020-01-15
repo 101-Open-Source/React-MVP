@@ -18,7 +18,7 @@ class App extends Component {
     var data = this.state;
 
     axios
-      .post("http://localhost:3305/sending-username-to-server", {
+      .post("http://localhost:3305/sendingUsername", {
         username: this.state.username
       })
       .then(() => console.log("success"))

@@ -9,8 +9,21 @@ app.use(cors());
 //no need for Body Parser, changed to use middleware
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }));
+app.get("/gettingUsername", express.json(), (req, res)=>{
+  User.findAll()
+  .then((data)=>{
+    console.log("retreive data success")
+    res.send(data)
+  })
+  .catch((err)=>{
+    console.log("Error")
+    res.send(err)
+  })
+})
 
-app.post("/sending-username-to-server", express.json(), (req, res) => {
+
+
+app.post("/sendingUsername", express.json(), (req, res) => {
   var username = req.body.username
 
   User.create({
@@ -29,6 +42,9 @@ app.post("/sending-username-to-server", express.json(), (req, res) => {
     })
 
 });
+
+
+
 app.get("/", (req, res, next) => {
   res.send("Hello World!");
   next();
