@@ -27,6 +27,7 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get(`http://localhost:3305/gettingUsername`).then(res => {
+      console.log(res.data);
       const names = res.data;
       this.setState({ names });
     });
