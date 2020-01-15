@@ -1,21 +1,16 @@
 const Sequelize = require("sequelize");
 
-
-
-const db = new Sequelize('userdb', 'root', 'rbk6', {
-  host: 'localhost',
-  dialect: 'mysql'
+const db = new Sequelize("userdb", "root", "0000", {
+  host: "localhost",
+  dialect: "mysql"
 });
-
 
 db.sync({
   force: false,
   logging: false
 }).then(() => {
-  console.log(`Database & tables created!`)
+  console.log(`Database & tables created!`);
 });
 
 module.exports.db = db;
-module.exports.Sequelize = Sequelize; 
-
-
+module.exports.Sequelize = Sequelize;

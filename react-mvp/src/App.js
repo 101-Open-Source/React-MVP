@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      username: ""
+      username: "",
+      names: []
     };
     this.onclick = this.onclick.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -24,7 +25,12 @@ class App extends Component {
       .then(() => console.log("success"))
       .catch(error => console.log(error));
   }
-
+  componentDidMount() {
+    axios.get(`http://localhost:3305/gettingUsername`).then(res => {
+      const names = res.data;
+      this.setState({ names });
+    });
+  }
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value
@@ -48,6 +54,13 @@ class App extends Component {
           <br />
           <button onClick={this.onclick}> Submit</button>
         </header>
+        <div>
+          <ul>
+            {this.state.names.map(p => (
+              <il> {p.username}</il>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
