@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 
 
 
-const db = new Sequelize('userdb', 'root', '0000', {
+const db = new Sequelize('userdb', 'root', 'rbk6', {
   host: 'localhost',
   dialect: 'mysql'
 });
@@ -16,4 +16,6 @@ db.sync({
 });
 
 module.exports.db = db;
-module.exports.Sequelize = Sequelize;
+module.exports.Sequelize = Sequelize; 
+
+

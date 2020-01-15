@@ -10,13 +10,12 @@ class App extends Component {
     this.state = {
       username: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onclick = this.onclick.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  handleSubmit() {
+  onclick() {
     var data = this.state;
-    console.log(data);
 
     axios
       .post("http://localhost:3305/sending-username-to-server", {
@@ -30,7 +29,6 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(this.state);
   }
 
   render() {
@@ -48,7 +46,7 @@ class App extends Component {
             onChange={this.onChange}
           />
           <br />
-          <button onClick={this.handleSubmit}> Submit</button>
+          <button onClick={this.onclick}> Submit</button>
         </header>
       </div>
     );

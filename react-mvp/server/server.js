@@ -11,9 +11,23 @@ app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/sending-username-to-server", express.json(), (req, res) => {
-  console.log("here");
-  console.log(req.body);
-  res.send("heee");
+  var username = req.body.username
+
+  User.create({
+    username: username
+  })
+    .then(() => {
+      console.log("new record are created")
+      return;
+    })
+    .catch((err) => {
+      if (err.name === "SequelizeUniqueConstraintError") {
+        console.log("user is already exists ") 
+        return;
+      }
+      return res.status(500).send(err)
+    })
+
 });
 app.get("/", (req, res, next) => {
   res.send("Hello World!");
